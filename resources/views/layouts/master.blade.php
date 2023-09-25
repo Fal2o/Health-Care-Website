@@ -79,17 +79,17 @@
             </a>
           </li> --}}
           <li class="active">
-            <a href="./user.html">
+            <a href="/admin">
               <i class="now-ui-icons users_single-02"></i>
               <p>User Table List</p>
             </a>
           </li>
-          {{-- <li class="">
-            <a href="./tables.html">
+          <li class="">
+            <a href="/admin/activity">
               <i class="now-ui-icons design_bullet-list-67"></i>
-              <p>User Table List</p>
+              <p>Activity Table</p>
             </a>
-          </li> --}}
+          </li>
           {{-- <li>
             <a href="./typography.html">
               <i class="now-ui-icons text_caps-small"></i>

@@ -37,14 +37,23 @@ Route::middleware(['auth:sanctum', config('jetstream.auth_session'), 'verified',
 
         
         Route::middleware(['admin'])->group(function () {
-        
+        // Homepage addmin
         Route::get('/admin',[adminController::class,'index'])->name('adminPage');
+        // CRUD
         Route::get('/admin/edit/{id}',[adminController::class,'edit']);
         Route::get('/admin/delete/{id}',[adminController::class,'delete']);
         Route::get('/admin/detial',[adminController::class,'detial']);
         Route::get('/admin/history',[adminController::class,'history']);
         Route::get('/admin/restore/{id}',[adminController::class,'restore']);
         Route::get('/admin/forcedelete/{id}',[adminController::class,'forcedelete']);
+        //Activity
+        Route::get('/admin/activity',[adminController::class,'activity']);
+        Route::get('/admin/activity/food',[adminController::class,'foodtable']);
+        Route::get('/admin/activity/exercise',[adminController::class,'exercisetable']);
+        Route::get('/admin/activity/addfood',[adminController::class,'addfood']);
+        Route::get('/admin/activity/show_foodtable',[adminController::class,'show_foodtable'])->name('show_foodtable');
+        Route::post('/admin/activity/save_addfood',[adminController::class,'save_foodtable']);
+        
 
         });
 

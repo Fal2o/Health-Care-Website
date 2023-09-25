@@ -32,7 +32,7 @@
                     <td>{{$user->email}}</td>
                     <td>
                       <a href="/admin/restore/{{ $user->id }}" class="btn btn-info" onclick="return confirm('Are you sure you want to restore this user?')">RESTORE</a>
-                      <a href="/admin/forceDelete/{{ $user->id }}" class="btn btn-danger" onclick="return confirm('Are you sure you want to forcedelete this user?')">FORCEDELETE</a>
+                      <a href="/admin/forcedelete/{{ $user->id }}" class="btn btn-danger" onclick="return confirm('Are you sure you want to forcedelete this user?')">FORCEDELETE</a>
 
                     </td>
                     
@@ -41,6 +41,7 @@
               </tbody>
             </table>
           </div>
+          <a href="/admin" class="btn btn-restore">User Table</a>
           
         </div>
       </div>
