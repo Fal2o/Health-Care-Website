@@ -1,18 +1,20 @@
-@extends('layouts.master')
+@extends('layouts.masterAdmin')
 
 
 @section('title')
-    Dashboard | admin
+HealthCare Project
 @endsection
 
-
+@section('navbar')
+Table List
+@endsection
 
 @section('content')
 <div class="row">
     <div class="col-md-12">
       <div class="card">
         <div class="card-header">
-          <h4 class="card-title">Activity Table</h4>
+          <h4 class="card-title">Table List</h4>
          
         </div>
         <div class="card-body">
@@ -23,8 +25,8 @@
                 <th>Action</th>
               </thead>
               <tbody>
-                <tr><td>Food</td><td><a href="/admin/activity/food" class="btn btn-primary">VIEW</a></td></tr>
-                <tr><td>Exercise</td><td><a href="/admin/activity/exercise" class="btn btn-primary">VIEW</a></td></tr>
+                <tr><td>Foods</td><td><a href="/admin/activity/food" class="btn btn-primary">VIEW</a></td></tr>
+                <tr><td>recommandations</td><td><a href="/admin/activity/recommandations" class="btn btn-primary">VIEW</a></td></tr>
               </tbody>
             </table>
           </div>

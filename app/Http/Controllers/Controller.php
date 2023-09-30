@@ -5,6 +5,9 @@ namespace App\Http\Controllers;
 use Illuminate\Foundation\Auth\Access\AuthorizesRequests;
 use Illuminate\Foundation\Validation\ValidatesRequests;
 use Illuminate\Routing\Controller as BaseController;
+use App\Models\User;
+use App\Models\body_measurement;
+use Illuminate\Support\Facades\Auth;
 
 class Controller extends BaseController
 {
@@ -35,6 +38,22 @@ class Controller extends BaseController
     }
 
     public function index(){
-        
+        $user_type = Auth::user()->user_type;
+        return view('Dashboard',compact('user_type'));
+    }
+
+    public function showBodyDatatest(){
+        $user = Auth::user();
+        $bodyData = body_measurement::where('user_id', $user->id)
+            ->orderBy('created_at', 'asc')
+            ->get();
+
+
+        foreach ($bodyData as $record) {
+            $record = $record->created_at->format('d F Y');;
+        }
+
+
+        return view('body.bodydata', ['bodyData' => $bodyData]);
     }
 }

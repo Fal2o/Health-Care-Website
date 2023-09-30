@@ -5,9 +5,7 @@
 HealthCare Project
 @endsection
 
-@section('navbar')
-Table List |  Add Foods
-@endsection
+
 
 @section('content')
 
@@ -17,18 +15,18 @@ Table List |  Add Foods
             <div class="card">
                 <div class="col-md-12">
                     <div class="card-header">
-                        <h3>Add food</h3>
+                        <h3>Add Exercise Type</h3>
                         
                     </div>
                     <div class="card-body">
-                        <form action="save_addfood" method="POST" enctype="multipart/form-data">
+                        <form action="save_addexercise" method="POST" >
                             @csrf
                            
                             <div class="mb-3">
-                                <label class="form-label">Name</label>
-                                <input type="text" class="form-control" id="" name="food_name">
-                                <div  class="form-text">Add food items that are not yet in the table.</div>
-                                @error('food_name')
+                                <label class="form-label">Exercise Type</label>
+                                <input type="text" class="form-control" id="" name="exercise_type" pattern="[A-Za-z]{+}">
+                                <div  class="form-text">Add exerciser type that are not yet in the table.</div>
+                                @error('exercise_type')
                                     <div class="text-danger">{{ $message }}</div>
                                 @enderror
                             </div>
@@ -36,33 +34,24 @@ Table List |  Add Foods
                            
                             <div class="mb-3">
                                 <label class="form-label">Calorie</label>
-                                <input type="text" class="form-control" id="" name="calorie" pattern="[0-9]+">
+                                <input type="text" class="form-control" id="" name="calorie" pattern="[0-9]{+}">
                                 @error('calorie')
                                     <div class="text-danger">{{ $message }}</div>
                                 @enderror
                             </div>
-                           
-                            
-                            <div class="mb-3">
-                                <label class="form-label">Food image</label>
-                                <input type="file" class="form-control" id="" name="img_food">
-                                @error('img_food')
-                                    <div class="text-danger">{{ $message }}</div>
-                                @enderror
-                              </div>
                                                                                    
-                              <div class="mb-3">
-                                <label class="form-text" ><a href="{{ route('show_foodtable') }}">show foodtable</a></label>
-                              </div>
+                            <div class="mb-3">
+                                <label class="form-text" ><a href="{{ route('show_exercisetable') }}">show exercisetable</a></label>
+                            </div>
                               <button type="submit" class="btn btn-primary">Submit</button>
-                              <a href="food" class="btn btn-secondary">Cancel</a>
+                              <a href="food" class="btn btn-secondary">Back</a>
                               
     
                         </form>
                     </div>                  
             </div>
         </div>
-            @if(isset($allfood))
+            @if(isset($allexercise))
                 <div class="row">
                     <div class="col-md-12">
                         <div class="card">
@@ -75,16 +64,13 @@ Table List |  Add Foods
                                         <th>Calorie</th>
                                 </thead>
                                 <tbody>
-                                    @foreach ($allfood as $food)
+                                    @foreach ($allexercise as $item)
                                     <tr>
-                                        <td>{{$food->id}}</td>
-                                        <td>{{$food->food_name}}</td>
-                                        <td>{{$food->calorie}}</td>
-                                        <td></td>
-                                        
-                                    </tr> 
+                                        <td>{{$item->id}}</td>
+                                        <td>{{$item->exercis_type}}</td>
+                                        <td>{{$item->calorie}}</td>                                  
+                                    </tr>  
                                     @endforeach
-                                   
                                 </tbody>
                                 </table>
                             </div>
@@ -92,8 +78,7 @@ Table List |  Add Foods
                         </div>
                         </div>
                     </div>
-                </div>
-                        
+                </div>             
             @endif
         
     </div>

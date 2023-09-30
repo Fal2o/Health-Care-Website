@@ -1,11 +1,14 @@
-@extends('layouts.master')
+@extends('layouts.masterAdmin')
 
 
 @section('title')
-    Dashboard | admin
+HealthCare Project
 @endsection
 
 
+@section('navbar')
+User Profile |  History
+@endsection
 
 @section('content')
 <div class="row">
@@ -13,7 +16,11 @@
       <div class="card">
         <div class="card-header">
           <h4 class="card-title">History</h4>
-         
+          @if (session('status-forcedelete'))
+              <div class="alert alert-danger" role="alert">
+                {{session('status-forcedelete')}}
+              </div>
+            @endif
         </div>
         <div class="card-body">
           <div class="table-responsive">

@@ -1,8 +1,8 @@
-@extends('layouts.master')
+@extends('layouts.masterAdmin')
 
 
 @section('title')
-    Dashboard | admin Edit
+HealthCare Project
 @endsection
 
 

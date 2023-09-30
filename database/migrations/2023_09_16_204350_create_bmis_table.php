@@ -17,9 +17,8 @@ return new class extends Migration
             $table->float('height');
             $table->float('weight');
 
-            $table->unsignedBigInteger('rec_id');
-            $table->foreign('rec_id')->references('id')->on('recommends');
-
+            // $table->unsignedBigInteger('rec_id')->nullable();
+            // $table->foreign('rec_id')->references('id')->on('recommends');
 
             $table->unsignedBigInteger('user_id');
             $table->foreign('user_id')->references('id')->on('users');
@@ -34,5 +33,6 @@ return new class extends Migration
     public function down(): void
     {
         Schema::dropIfExists('bmis');
+
     }
 };
