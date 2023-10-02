@@ -11,7 +11,7 @@
 <div class="row">
     <div class="col-md-12">
         <div class="card">
-            <div class="card-hheader">
+            <div class="card-header">
                 <h3>เพิ่มข้อมูลร่างกายของคุณ</h3>
             </div>
             <div class="card-body">

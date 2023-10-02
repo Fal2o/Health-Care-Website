@@ -11,43 +11,7 @@
                 </div>
 
                 <!-- Navigation Links -->
-                @if (Auth::user()->user_type != 'admin')
-                    <div class="hidden space-x-8 sm:-my-px sm:ml-10 sm:flex">
-                        <x-nav-link href="{{ route('dashboard') }}" :active="request()->routeIs('dashboard')">
-                            {{ __('Homepage') }}
-                        </x-nav-link>
-                        <x-nav-link href="{{ route('bmi') }}" :active="request()->routeIs('bmi')">
-                            {{ __('bmi') }}
-                        </x-nav-link>
-                        <x-nav-link href="{{ route('sleep') }}" :active="request()->routeIs('sleep')">
-                            {{ __('sleep') }}
-                        </x-nav-link>
-                        <x-nav-link href="{{ route('exercise') }}" :active="request()->routeIs('exercise')">
-                            {{ __('exercise') }}
-                        </x-nav-link>
-                        <x-nav-link href="{{ route('food') }}" :active="request()->routeIs('food')">
-                            {{ __('food') }}
-                        </x-nav-link>
-                        <x-nav-link href="{{ route('body') }}" :active="request()->routeIs('body')">
-                            {{ __('body') }}
-                        </x-nav-link>
-                        <x-nav-link href="{{ route('menstruation') }}" :active="request()->routeIs('menstruation')">
-                            {{ __('menstruation') }}
-                        </x-nav-link>
-                        
-                        
-                    </div>
-                @else
-                    <div class="hidden space-x-8 sm:-my-px sm:ml-10 sm:flex">
-                        <x-nav-link href="{{ route('dashboard') }}" :active="request()->routeIs('dashboard')">
-                            {{ __('Homepage') }}
-                        </x-nav-link>
-                        <x-nav-link href="/admin" >
-                            {{ __('Adminpage') }}
-                        </x-nav-link>
-
-                    </div>
-                @endif
+                
                 
             </div>
 

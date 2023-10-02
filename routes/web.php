@@ -4,6 +4,11 @@ use App\Http\Controllers\adminController;
 use App\Http\Controllers\Controller;
 use App\Http\Controllers\bodymController;
 use App\Http\Controllers\exerciseController;
+use App\Http\Controllers\SleepController;
+use App\Http\Controllers\MenstruationController;
+use App\Http\Controllers\foodController;
+
+
 
 use Illuminate\Support\Facades\Route;
 use App\Models\diet_plan;
@@ -37,11 +42,14 @@ Route::middleware(['auth:sanctum', config('jetstream.auth_session'), 'verified',
 
    
         // เส้นทางสำหรับผู้ใช้ทั่วไป
-        // Route::get('/dashboard', function () {
-        //     return view('dashboard');
-        // })->name('dashboard');
+        Route::get('/dashboard', function () {
+            $allUser = user::all();
+            $users_admin = User::where('user_type', 'admin')->get();
+            $users= User::where('user_type', '0')->get();
+            return view('dashboard',compact('users_admin','allUser','users'));
+        })->name('dashboard');
            
-        Route::get('/dashboard',[Controller::class,'index'])->name('dashboard');
+        // Route::get('/dashboard',[Controller::class,'index'])->name('dashboard');
 
         
     Route::middleware(['admin'])->group(function () {
@@ -78,20 +86,9 @@ Route::middleware(['auth:sanctum', config('jetstream.auth_session'), 'verified',
 
         });
 
-        
-        
-
-        Route::get('/bmix',[Controller::class,'bmiPage'])->name('bmi');
-        Route::get('/sleep',[Controller::class,'sleepPage'])->name('sleep');
-        Route::get('/exercise',[Controller::class,'exercisePage'])->name('exercise');
-        Route::get('/fodd',[Controller::class,'foodPage'])->name('food');
-        Route::get('/body',[Controller::class,'bodyPage'])->name('body');
-        Route::get('/menstruation',[Controller::class,'menstruationPage'])->name('menstruation');
-        
-
-        //pingpong's function
-
-
+    Route::middleware(['user'])->group(function () { 
+   
+    //pingpong's function
     //path ของ body_measurement
     Route::get('/showbody', [bodymController::class, 'showBodyData']) -> name('body.show');
     Route::get('/insertbody', function () {return view('body.insertbodydata');} ) -> name('body.insert');
@@ -99,9 +96,6 @@ Route::middleware(['auth:sanctum', config('jetstream.auth_session'), 'verified',
     Route::get('/editbody/{id}', [bodymController::class, 'editbody']) -> name('body.edit');
     Route::put('/editbody/updatebody/{id}', [bodymController::class, 'updateBody']) -> name('body.update');
     Route::get('/chartbody', [bodymController::class, 'showChartbody'])->name('body.chart');
-
-
-
 
     //path ของ exerciserecord
     Route::get('/showexercise', [exerciseController::class, 'showExerciseRecords'] ) -> name('exercise.show');
@@ -112,11 +106,77 @@ Route::middleware(['auth:sanctum', config('jetstream.auth_session'), 'verified',
     Route::get('/chartexercise', [exerciseController::class, 'showChartexercise'])->name('exercise.chart');
 
 
+    //fang
+    //sleeps
+    Route::get('/sleeps', [SleepController::class,'index'])->name('sleep.index');
+    Route::post('/sleeps/store', [SleepController::class,'store'])->name('sleep.store');
+    Route::get('/store', function() {return view('sleep.sleep');})->name('sleep.showsleep');
+    Route::get('/sleeps/edit/{id}', [SleepController::class, 'editsleep'])->name('sleep.edit');
+    Route::put('/sleeps/update/{id}', [SleepController::class, 'updatesleep'])->name('sleep.update');
+    Route::get('/chartsleeps', [SleepController::class, 'showChartsleep'])->name('sleep.chart');
+
+
+
+
+    //men
+    Route::get('/mens', [MenstruationController::class,'index'])->name('men.index');
+    Route::post('/mens/stores', [MenstruationController::class, 'storemen']) ->name('men.store');
+    Route::get('/stores', function() {return view('menstruation.men');})->name('men.showmen');
+    Route::get('/mens/edit/{id}', [MenstruationController::class, 'editmen'])->name('men.edit');
+    Route::put('/mens/update/{id}', [MenstruationController::class, 'updatemen'])->name('men.update');
+    Route::get('/calmens{id}', [MenstruationController::class,'calmens']) ->name('men.calmens');
+    Route::get('/chartmens', [MenstruationController::class, 'showChartmen'])->name('men.chart');
+
+    Route::get('/food',[foodController::class,'index']);
+
+    Route::get('/food/select/{id}',[foodController::class,'select_food']);
+
+
+        //หน้าhome nut
+    Route::get('/homepage', function () {
+    return view('homepage');
+    })->name('homepage');
+
+
+
+
+
+
+    Route::get('/bmi', function () {
+    return view('bmi');
+    })->name('bmi');
+
+
+    Route::POST('/bmi', [bmiController::class, 'calculateBMI']);
+    Route::post('/bmi/save', [bmiController::class, 'savebmi'])->name('bmi.save');
+    Route::get('/bmi/delete/{bmi_id}', [bmiController::class, 'deletebmi'])->name('bmi.delete');
+    Route::get('/recommend', [bmiController::class, 'recommend'])->name('recommend');
+    Route::get('/recommendpro/{bmi_id}', [bmiController::class, 'recommendpro'])->name('recommendpro');
+    Route::post('/recommendpro/update', [bmiController::class, 'updaterecommend'])->name('recommendpro.update');
+    Route::get('/healthrecord', function () {
+    return view('healthrecord');
+    })->name('healthrecord');
+
+
+
+
+
+
+    });
+        
+        
+
+
+        
+
+     
+
+
 
 
         
        
     
     
-    // ... เส้นทางอื่น ๆ ที่คุณต้องการ
+    
 });

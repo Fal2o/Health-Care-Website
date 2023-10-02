@@ -48,7 +48,7 @@ Table List |  Foods
                     <td>{{$food->calorie}}</td>
                     <td>
                       <a href="/admin/activity/food_edit/{{$food->id}}" class="btn btn-primary" >EDIT</a>
-                      <a href="/admin/activity/food_delete/{{$food->id}} class="btn btn-danger" onclick="return confirm('Are you sure you want to delete this delicious food?')" class="btn btn-danger">DELETE</a>
+                      <a href="/admin/activity/food_delete/{{$food->id}}" class="btn btn-danger" onclick="return confirm('Are you sure you want to delete this delicious food?')" class="btn btn-danger">DELETE</a>
                     </td>
                    
                     
@@ -60,6 +60,7 @@ Table List |  Foods
             </table>
           </div>
           <a href="addfood" class="btn btn btn-primary" >Add food</a>
+          <a href="/admin/activity" class="btn" >Back</a>
         </div>
       </div>
     </div>

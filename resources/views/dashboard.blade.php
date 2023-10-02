@@ -85,29 +85,29 @@
               </a>
             </li>
             <li>
-              <a href="./notifications.html">
-              <i class="now-ui-icons ui-1_bell-53"></i>
-              <p>Notifications</p>
+              <a href="/sleeps">
+              <i class="now-ui-icons ui-2_time-alarm"></i>
+              <p>sleeps</p>
               </a>
             </li>
             <li class ="{{ '' == request()->path() ? 'active ' : '' }}"">
-                <a href="">
+                <a href="/mens">
                 <i class="now-ui-icons design_bullet-list-67"></i>
-                <p>Table List</p>
+                <p>menstruation</p>
                 </a>
             </li>
             <li>
-              <a href="./typography.html">
-              <i class="now-ui-icons text_caps-small"></i>
-              <p>Typography</p>
+              <a href="/food">
+              <i class="now-ui-icons emoticons_satisfied"></i>
+              <p>Food</p>
               </a>
             </li>
-            <li class="active-pro">
+            {{-- <li class="active-pro">
               <a href="./upgrade.html">
               <i class="now-ui-icons arrows-1_cloud-download-93"></i>
               <p>Upgrade to PRO Admin</p>
               </a>
-            </li>
+            </li> --}}
           </ul>
           @endif
           
@@ -161,7 +161,7 @@
                   {{-- <p>
                     <span class="d-lg-none d-md-block">Account</span>
                   </p> --}}
-                  {{Auth::user()->name}}
+                 
                 </a>
                 
                 <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdownMenuLink">
@@ -198,89 +198,98 @@
       </div>
       <div class="content">
         @if (Auth::user()->user_type == 'admin')
-          
-        @else 
-          
-        @endif
-          {{-- <div class="row">
-            <div class="col-lg-4">
-              <div class="card card-chart">
-                <div class="card-header">
-                  <h5 class="card-category">Global Sales</h5>
-                  <h4 class="card-title">Shipped Products</h4>
-                  <div class="dropdown">
-                    <button type="button" class="btn btn-round btn-outline-default dropdown-toggle btn-simple btn-icon no-caret" data-toggle="dropdown">
-                      <i class="now-ui-icons loader_gear"></i>
-                    </button>
-                    <div class="dropdown-menu dropdown-menu-right">
-                      <a class="dropdown-item" href="#">Action</a>
-                      <a class="dropdown-item" href="#">Another action</a>
-                      <a class="dropdown-item" href="#">Something else here</a>
-                      <a class="dropdown-item text-danger" href="#">Remove Data</a>
-                    </div>
+        <div class="row">
+          <div class="col-lg-4">
+            <div class="card card-chart">
+              <div class="card-header">
+                {{-- <h5 class="card-category">Admin Config</h5> --}}
+                <h4 class="card-title">  <i class="now-ui-icons users_single-02"></i> User In HealthCareProject</h4>
+                
+                {{-- <div class="dropdown">
+                  <button type="button" class="btn btn-round btn-outline-default dropdown-toggle btn-simple btn-icon no-caret" data-toggle="dropdown">
+                    <i class="now-ui-icons loader_gear"></i>
+                  </button>
+                  <div class="dropdown-menu dropdown-menu-right">
+                    <a class="dropdown-item" href="#">Action</a>
+                    <a class="dropdown-item" href="#">Another action</a>
+                    <a class="dropdown-item" href="#">Something else here</a>
+                    <a class="dropdown-item text-danger" href="#">Remove Data</a>
                   </div>
-                </div>
-                <div class="card-body">
-                  <div class="chart-area">
-                    <canvas id="lineChartExample"></canvas>
-                  </div>
-                </div>
-                <div class="card-footer">
-                  <div class="stats">
-                    <i class="now-ui-icons arrows-1_refresh-69"></i> Just Updated
+                </div> --}}
+              </div>
+              <div class="card-body">
+              <div class="card-title">
+                <h5>
+                  <ul>
+                    <li>All User:  {{count($allUser)}}</li>
+                    <li>Admin:  {{count($users_admin)}}</li>
+                    <li>User:  {{count($users)}}</li>
+                  </ul>
+                </h5>
+                
+    
+              </div>
+                {{-- <div class="chart-area">
+                  <canvas id="lineChartExample"></canvas>
+                </div> --}}
+              </div>
+              <div class="card-footer">
+                
+                {{-- <div class="stats">
+                  <i class="now-ui-icons arrows-1_refresh-69"></i> 
+                </div> --}}
+              </div>
+            </div>
+          </div>
+          <div class="col-lg-4 col-md-6">
+            <div class="card card-chart">
+              <div class="card-header">
+                <h5 class="card-category">2018 Sales</h5>
+                <h4 class="card-title">All products</h4>
+                <div class="dropdown">
+                  <button type="button" class="btn btn-round btn-outline-default dropdown-toggle btn-simple btn-icon no-caret" data-toggle="dropdown">
+                    <i class="now-ui-icons loader_gear"></i>
+                  </button>
+                  <div class="dropdown-menu dropdown-menu-right">
+                    <a class="dropdown-item" href="#">Action</a>
+                    <a class="dropdown-item" href="#">Another action</a>
+                    <a class="dropdown-item" href="#">Something else here</a>
+                    <a class="dropdown-item text-danger" href="#">Remove Data</a>
                   </div>
                 </div>
               </div>
-            </div>
-            <div class="col-lg-4 col-md-6">
-              <div class="card card-chart">
-                <div class="card-header">
-                  <h5 class="card-category">2018 Sales</h5>
-                  <h4 class="card-title">All products</h4>
-                  <div class="dropdown">
-                    <button type="button" class="btn btn-round btn-outline-default dropdown-toggle btn-simple btn-icon no-caret" data-toggle="dropdown">
-                      <i class="now-ui-icons loader_gear"></i>
-                    </button>
-                    <div class="dropdown-menu dropdown-menu-right">
-                      <a class="dropdown-item" href="#">Action</a>
-                      <a class="dropdown-item" href="#">Another action</a>
-                      <a class="dropdown-item" href="#">Something else here</a>
-                      <a class="dropdown-item text-danger" href="#">Remove Data</a>
-                    </div>
-                  </div>
+              <div class="card-body">
+                <div class="chart-area">
+                  <canvas id="lineChartExampleWithNumbersAndGrid"></canvas>
                 </div>
-                <div class="card-body">
-                  <div class="chart-area">
-                    <canvas id="lineChartExampleWithNumbersAndGrid"></canvas>
-                  </div>
-                </div>
-                <div class="card-footer">
-                  <div class="stats">
-                    <i class="now-ui-icons arrows-1_refresh-69"></i> Just Updated
-                  </div>
+              </div>
+              <div class="card-footer">
+                <div class="stats">
+                  <i class="now-ui-icons arrows-1_refresh-69"></i> Just Updated
                 </div>
               </div>
             </div>
-            <div class="col-lg-4 col-md-6">
-              <div class="card card-chart">
-                <div class="card-header">
-                  <h5 class="card-category">Email Statistics</h5>
-                  <h4 class="card-title">24 Hours Performance</h4>
+          </div>
+          <div class="col-lg-4 col-md-6">
+            <div class="card card-chart">
+              <div class="card-header">
+                <h5 class="card-category">Email Statistics</h5>
+                <h4 class="card-title">24 Hours Performance</h4>
+              </div>
+              <div class="card-body">
+                <div class="chart-area">
+                  <canvas id="barChartSimpleGradientsNumbers"></canvas>
                 </div>
-                <div class="card-body">
-                  <div class="chart-area">
-                    <canvas id="barChartSimpleGradientsNumbers"></canvas>
-                  </div>
-                </div>
-                <div class="card-footer">
-                  <div class="stats">
-                    <i class="now-ui-icons ui-2_time-alarm"></i> Last 7 days
-                  </div>
+              </div>
+              <div class="card-footer">
+                <div class="stats">
+                  <i class="now-ui-icons ui-2_time-alarm"></i> Last 7 days
                 </div>
               </div>
             </div>
-          </div> --}} 
-          <!-- พื่นหลัง background-->
+          </div>
+        </div>
+        
         {{-- <div class="row">
           <div class="col-md-6">
             <div class="card  card-tasks">
@@ -463,7 +472,12 @@
             </div>
           </div>
         </div> --}}
-      </div>
+        
+        @else
+        {{-- content dashboard for user  --}}
+
+        @endif
+     
       <footer class="footer">
         <div class=" container-fluid ">
           <nav>

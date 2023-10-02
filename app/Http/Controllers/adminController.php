@@ -112,7 +112,7 @@ class adminController extends Controller
 
     public function addfood(){
         
-        return view('admin.addfoodForm');
+        return view('admin.addfoodForm')->with('success_save','Food Have Been Saved!');
     }
 
     public function show_foodtable(){
@@ -160,7 +160,7 @@ class adminController extends Controller
         $new_food -> img_food = $full_imgpath;
         $new_food->save();
 
-        return redirect('/admin/activity/food')->with('success_save','Food Have Been Updated!'); ;
+        return redirect('/admin/activity/food')->with('success_save','Food Have Been Saved!'); ;
     }
 
     public function update_food(Request $request, $id){

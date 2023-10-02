@@ -54,19 +54,19 @@
         </div>
 
         <div class="sidebar-wrapper" id="sidebar-wrapper">
-            <ul class="nav">
+          <ul class="nav">
             <li class=" ">
-                <a href="/dashboard">
-                <i class="now-ui-icons design_app"></i>
-                <p>Dashboard</p>
-                </a>
+              <a href="/dashboard">
+              <i class="now-ui-icons design_app"></i>
+              <p>Dashboard</p>
+              </a>
             </li>
             <li class="">
-                <a href="/showbody">
-                <i class="now-ui-icons text_bold"></i>
-                <p>Body</p>
-                </a>
-            </li>
+              <a href="/showbody">
+              <i class="now-ui-icons text_bold"></i>
+              <p>Body</p>
+              </a>
+          </li>
             <li>
               <a href="/showexercise">
               <i class="now-ui-icons sport_user-run"></i>
@@ -74,36 +74,30 @@
               </a>
             </li>
             <li>
-                <a href="./notifications.html">
-                <i class="now-ui-icons ui-1_bell-53"></i>
-                <p>Notifications</p>
-                </a>
+              <a href="/sleeps">
+              <i class="now-ui-icons ui-2_time-alarm"></i>
+              <p>sleeps</p>
+              </a>
             </li>
-            <li>
-                <a href="./user.html">
-                <i class="now-ui-icons users_single-02"></i>
-                <p>User Profile</p>
-                </a>
-            </li>
-            <li>
-                <a href="./tables.html">
+            <li class ="{{ '' == request()->path() ? 'active ' : '' }}"">
+                <a href="/mens">
                 <i class="now-ui-icons design_bullet-list-67"></i>
-                <p>Table List</p>
+                <p>menstruation</p>
                 </a>
             </li>
             <li>
-                <a href="./typography.html">
-                <i class="now-ui-icons text_caps-small"></i>
-                <p>Typography</p>
-                </a>
+              <a href="/food">
+              <i class="now-ui-icons emoticons_satisfied"></i>
+              <p>Food</p>
+              </a>
             </li>
-            <li class="active-pro">
-                <a href="./upgrade.html">
-                <i class="now-ui-icons arrows-1_cloud-download-93"></i>
-                <p>Upgrade to PRO</p>
-                </a>
-            </li>
-            </ul>
+            {{-- <li class="active-pro">
+              <a href="./upgrade.html">
+              <i class="now-ui-icons arrows-1_cloud-download-93"></i>
+              <p>Upgrade to PRO Admin</p>
+              </a>
+            </li> --}}
+          </ul>
         </div>
   </div>
 

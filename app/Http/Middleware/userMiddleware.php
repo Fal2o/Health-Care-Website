@@ -7,7 +7,7 @@ use Illuminate\Http\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Illuminate\Support\Facades\Auth;
 
-class adminMiddleware
+class userMiddleware
 {
     /**
      * Handle an incoming request.
@@ -16,10 +16,9 @@ class adminMiddleware
      */
     public function handle(Request $request, Closure $next): Response
     {
-   
-         if (Auth::check()) {
+        if (Auth::check()) {
             // ตรวจสอบ user_type ว่าเป็น 'admin' หรือไม่
-            if (Auth::user()->user_type == 'admin') {
+            if (Auth::user()->user_type == 'user' or Auth::user()->user_type == '0') {
                 // ถ้าเป็น 'admin' ให้ไปยังเส้นทาง '/admin'
                 return $next($request);
                 
@@ -30,11 +29,5 @@ class adminMiddleware
             
             
         }
-    
-    
-
-
-        
-
     }
 }
