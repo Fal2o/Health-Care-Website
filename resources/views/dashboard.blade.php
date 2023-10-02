@@ -158,6 +158,7 @@
               <li class="nav-item dropdown">
                 <a class="nav-link dropdown-toggle" id="navbarDropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                   <i class="now-ui-icons users_single-02"></i>
+                  {{Auth::user()->name}}
                   {{-- <p>
                     <span class="d-lg-none d-md-block">Account</span>
                   </p> --}}
@@ -193,98 +194,105 @@
       </nav> 
       <!-- End Navbar -->
       <div class="panel-header panel-header-sm">
-        {{-- <canvas id="bigDashboardChart"></canvas> --}}
-        <!-- พื่นหลังด้านบน!-->
+        
       </div>
       <div class="content">
+    
         @if (Auth::user()->user_type == 'admin')
         <div class="row">
           <div class="col-lg-4">
             <div class="card card-chart">
               <div class="card-header">
-                {{-- <h5 class="card-category">Admin Config</h5> --}}
-                <h4 class="card-title">  <i class="now-ui-icons users_single-02"></i> User In HealthCareProject</h4>
-                
-                {{-- <div class="dropdown">
-                  <button type="button" class="btn btn-round btn-outline-default dropdown-toggle btn-simple btn-icon no-caret" data-toggle="dropdown">
-                    <i class="now-ui-icons loader_gear"></i>
-                  </button>
-                  <div class="dropdown-menu dropdown-menu-right">
-                    <a class="dropdown-item" href="#">Action</a>
-                    <a class="dropdown-item" href="#">Another action</a>
-                    <a class="dropdown-item" href="#">Something else here</a>
-                    <a class="dropdown-item text-danger" href="#">Remove Data</a>
-                  </div>
+                <h5 class="card-category">Welcome to</h5>
+                <h4 class="card-title">  HealthCareProject</h4>       
+              </div>
+
+            
+              
+              <div class="dropdown">
+                <button type="button" class="btn btn-round btn-outline-default dropdown-toggle btn-simple btn-icon no-caret" data-toggle="dropdown">
+                  <i class="now-ui-icons education_atom"></i>
+                </button>
+                {{-- <div class="dropdown-menu dropdown-menu-right">
+                  <a class="dropdown-item" href="#"> <i class="now-ui-icons users_circle-08"> All User :  {{count($allUser)}}</i></a>
+                  <a class="dropdown-item" href="#"> <i class="now-ui-icons users_single-02"> Admin :  {{count($users_admin)}}</i></a>
+                  <a class="dropdown-item" href="#"> <i class="now-ui-icons users_single-02"> User :  {{count($users)}}</i></a>
                 </div> --}}
               </div>
-              <div class="card-body">
-              <div class="card-title">
-                <h5>
-                  <ul>
-                    <li>All User:  {{count($allUser)}}</li>
-                    <li>Admin:  {{count($users_admin)}}</li>
-                    <li>User:  {{count($users)}}</li>
-                  </ul>
-                </h5>
-                
-    
-              </div>
-                {{-- <div class="chart-area">
-                  <canvas id="lineChartExample"></canvas>
-                </div> --}}
-              </div>
-              <div class="card-footer">
-                
-                {{-- <div class="stats">
-                  <i class="now-ui-icons arrows-1_refresh-69"></i> 
-                </div> --}}
+            
+           <div class="card-body">
+            <p style="text-indent: 2em; text-align: justify;">
+              Our website is about daily health recording. To track your own health information On our website there are many functions to choose from such as bmi sleep menstruation Food and you can view data for each month in the form of graphs. Including individual health advice. Information is constantly updated to remain relevant to users at all times. Enjoy our website :)
+            </p>
+            
+            </div>
+
+            <div class="card-footer">
+
               </div>
             </div>
           </div>
+
           <div class="col-lg-4 col-md-6">
             <div class="card card-chart">
               <div class="card-header">
-                <h5 class="card-category">2018 Sales</h5>
-                <h4 class="card-title">All products</h4>
+                <h5 class="card-category">Admin {{Auth::user()->name}}</h5>
+                <h4 class="card-title">All User</h4>
                 <div class="dropdown">
                   <button type="button" class="btn btn-round btn-outline-default dropdown-toggle btn-simple btn-icon no-caret" data-toggle="dropdown">
-                    <i class="now-ui-icons loader_gear"></i>
+                    <i class="now-ui-icons business_badge"></i>
                   </button>
                   <div class="dropdown-menu dropdown-menu-right">
-                    <a class="dropdown-item" href="#">Action</a>
-                    <a class="dropdown-item" href="#">Another action</a>
-                    <a class="dropdown-item" href="#">Something else here</a>
-                    <a class="dropdown-item text-danger" href="#">Remove Data</a>
+                    <a class="dropdown-item" href="#"> <i class="now-ui-icons users_circle-08"> All User :  {{count($allUser)}}</i></a>
+                    <a class="dropdown-item" href="#"> <i class="now-ui-icons users_single-02"> Admin :  {{count($users_admin)}}</i></a>
+                    <a class="dropdown-item" href="#"> <i class="now-ui-icons users_single-02"> User :  {{count($users)}}</i></a>
                   </div>
                 </div>
               </div>
+
               <div class="card-body">
-                <div class="chart-area">
-                  <canvas id="lineChartExampleWithNumbersAndGrid"></canvas>
-                </div>
+                <ul>
+                  @foreach ($allUser as $item)
+                    <li>{{$item->name}}</li>
+                  @endforeach
+                </ul>
+                
               </div>
+
               <div class="card-footer">
-                <div class="stats">
-                  <i class="now-ui-icons arrows-1_refresh-69"></i> Just Updated
-                </div>
+    
               </div>
+
             </div>
           </div>
           <div class="col-lg-4 col-md-6">
             <div class="card card-chart">
               <div class="card-header">
-                <h5 class="card-category">Email Statistics</h5>
-                <h4 class="card-title">24 Hours Performance</h4>
-              </div>
-              <div class="card-body">
-                <div class="chart-area">
-                  <canvas id="barChartSimpleGradientsNumbers"></canvas>
+                <h5 class="card-category">Table List</h5>
+                <h4 class="card-title">Table That Admin Can Edit</h4>
+                <div class="dropdown">
+                  <button type="button" class="btn btn-round btn-outline-default dropdown-toggle btn-simple btn-icon no-caret" data-toggle="dropdown">
+                    <i class="now-ui-icons emoticons_satisfied"></i>
+                  </button>
+                  <div class="dropdown-menu dropdown-menu-right">
+                    <a class="dropdown-item" href="#"> <i class="now-ui-icons users_circle-08"> All User :  {{count($allUser)}}</i></a>
+                    <a class="dropdown-item" href="#"> <i class="now-ui-icons users_single-02"> Admin :  {{count($users_admin)}}</i></a>
+                    <a class="dropdown-item" href="#"> <i class="now-ui-icons users_single-02"> User :  {{count($users)}}</i></a>
+                  </div>
                 </div>
               </div>
+                <div class="card-body">
+                
+                 <ul>
+                  <li>Users</li>
+                  <li>Foods</li>
+                  <li>recommandations</li>
+                 </ul>
+                </div>
               <div class="card-footer">
-                <div class="stats">
+                {{-- <div class="stats">
                   <i class="now-ui-icons ui-2_time-alarm"></i> Last 7 days
-                </div>
+                </div> --}}
               </div>
             </div>
           </div>
@@ -483,17 +491,17 @@
           <nav>
             <ul>
               <li>
-                <a href="https://www.creative-tim.com">
-                  Creative Tim
+                <a href="">
+                  HealthCare
                 </a>
               </li>
               <li>
-                <a href="http://presentation.creative-tim.com">
+                <a href="">
                   About Us
                 </a>
               </li>
               <li>
-                <a href="http://blog.creative-tim.com">
+                <a href="">
                   Blog
                 </a>
               </li>
@@ -502,7 +510,7 @@
           <div class="copyright" id="copyright">
             &copy; <script>
               document.getElementById('copyright').appendChild(document.createTextNode(new Date().getFullYear()))
-            </script>, Designed by <a href="https://www.invisionapp.com" target="_blank">Invision</a>. Coded by <a href="https://www.creative-tim.com" target="_blank">Creative Tim</a>.
+            </script>, Designed by <a href="https://www.invisionapp.com" target="_blank">Invision</a>. Coded by <a href="" target="_blank">Faro</a>.
           </div>
         </div>
       </footer>

@@ -29,7 +29,7 @@ User Profile |  Edit
                                 <label>Role</label>
                                 <select name="user_type" id="" class="form-control">
                                     <option value="admin" {{ $user->user_type === 'admin' ? 'selected' : '' }}>admin</option>
-                                    <option value="user" {{$user->user_type === 'user' ? 'selected' : '' }}> user</option>
+                                    <option value="0" {{$user->user_type === '0'  ? 'selected' : '' }}> user</option>
                                 </select>
                             </div>
                             <button type="submit" class="btn btn-primary">Update</button>
