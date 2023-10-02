@@ -19,16 +19,16 @@ class healthrecordController extends Controller
 {
     function index(){
         $food = food::all();
-        return view("healthrecord", compact('food'));
+        return view("food.healthrecord", compact('food'));
     }
     function board(){
         $plans = diet_plan::where("user_id", "=", Auth::user()->id)
                 ->orderBy("date", "DESC")
                 ->get();
-        return view("healthrecordBoard", compact('plans'));
+        return view("food.healthrecordBoard", compact('plans'));
     }
     function updatePage($id){
-        return view("healthrecordUpdate", ["plan"=>diet_plan_food::find($id), "food"=>food::all()]);
+        return view("food.healthrecordUpdate", ["plan"=>diet_plan_food::find($id), "food"=>food::all()]);
     }
     function update(Request $rq){
         $plan = diet_plan_food::find($rq->id);
@@ -44,7 +44,7 @@ class healthrecordController extends Controller
         $plans = diet_plan::where("user_id", "=", Auth::user()->id)
                 ->orderBy("date", "ASC")
                 ->get();
-        return view("healthrecordChart", compact('plans'));
+        return view("food.healthrecordChart", compact('plans'));
     }
     function addFoodPlan(Request $req){
         try{

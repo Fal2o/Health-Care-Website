@@ -7,6 +7,7 @@ use App\Http\Controllers\exerciseController;
 use App\Http\Controllers\SleepController;
 use App\Http\Controllers\MenstruationController;
 use App\Http\Controllers\foodController;
+use App\Http\Controllers\healthrecordController;
 
 
 
@@ -31,7 +32,7 @@ Route::get('/', function () {
 });
 
 Route::get('/test', function () {
-    return view('admin.user');
+    return view('homepage');
 });
 
 //เส้นทางสำหรับ Admin
@@ -156,7 +157,7 @@ Route::middleware(['auth:sanctum', config('jetstream.auth_session'), 'verified',
     })->name('healthrecord');
 
 
-    // route
+    // dan food
     Route::get('/healthrecord', [healthrecordController::class, 'index'])->name('healthrecord');
     Route::get('/healthrecord/board', [healthrecordController::class, 'board']);
     Route::post('/healthrecord/insert', [healthrecordController::class, 'addFoodPlan']);

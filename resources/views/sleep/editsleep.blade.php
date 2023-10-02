@@ -2,18 +2,11 @@
 
     
 
-
-@extends('layouts.masterUser')
-
-@section('title')
-    HealthCare Project
-@endsection
-
 @section('content')
 <div class="row">
     <div class="col-md-12">
         <div class="card">
-            <div class="card-hheader">
+            <div class="card-header">
                 <h3>แก้ไขเวลาเข้านอนและเวลาตื่นนอนล่าสุด</h3>
             </div>
             <div class="card-body">

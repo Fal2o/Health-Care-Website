@@ -86,7 +86,7 @@
                 </a>
             </li>
             <li>
-              <a href="/food">
+              <a href="/healthrecord">
               <i class="now-ui-icons emoticons_satisfied"></i>
               <p>Food</p>
               </a>

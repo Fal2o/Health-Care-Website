@@ -45,7 +45,7 @@
                         </div>
 
 
-                        <button type="button" class="btn btn-info"
+                        <button type="button" class="btn btn-primary"
                             id="goToinsertexercise">เพิ่มข้อมูลการออกกำลังกายของคุณ</button>
                         <script>
                             document.getElementById('goToinsertexercise').addEventListener('click', function() {
