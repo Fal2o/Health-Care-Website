@@ -70,8 +70,8 @@
           <ul class="nav">
             <li class="active ">
               <a href="/dashboard">
-              <i class="now-ui-icons design_app"></i>
-              <p>Dashboard</p>
+              <i class="now-ui-icons shopping_shop"></i>
+              <p>Homepage</p>
               </a>
             </li>
             <li class="">
@@ -130,7 +130,14 @@
                 <span class="navbar-toggler-bar bar3"></span>
               </button>
             </div>
-            <a class="navbar-brand" href="#pablo">Dashboard</a>
+            <a class="navbar-brand" href="#pablo">
+              
+              @if(Auth::user()->user_type !='admin')
+                Homepage
+              @else
+                Dashboard
+              @endif
+            </a>
           </div>
           <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navigation" aria-controls="navigation-index" aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-bar navbar-kebab"></span>
@@ -160,7 +167,7 @@
               <li class="nav-item dropdown">
                 <a class="nav-link dropdown-toggle" id="navbarDropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                   <i class="now-ui-icons users_single-02"></i>
-                  {{Auth::user()->name}}
+                  {{Auth::user()->username}}
                   {{-- <p>
                     <span class="d-lg-none d-md-block">Account</span>
                   </p> --}}
@@ -255,7 +262,7 @@
               <div class="card-body">
                 <ul>
                   @foreach ($allUser as $item)
-                    <li>{{$item->name}}</li>
+                    <li>{{$item->username}}</li>
                   @endforeach
                 </ul>
                 
@@ -300,307 +307,134 @@
           </div>
         </div>
         
-        {{-- <div class="row">
-          <div class="col-md-6">
-            <div class="card  card-tasks">
-              <div class="card-header ">
-                <h5 class="card-category">Backend development</h5>
-                <h4 class="card-title">Tasks</h4>
-              </div>
-              <div class="card-body ">
-                <div class="table-full-width table-responsive">
-                  <table class="table">
-                    <tbody>
-                      <tr>
-                        <td>
-                          <div class="form-check">
-                            <label class="form-check-label">
-                              <input class="form-check-input" type="checkbox" checked>
-                              <span class="form-check-sign"></span>
-                            </label>
-                          </div>
-                        </td>
-                        <td class="text-left">Sign contract for "What are conference organizers afraid of?"</td>
-                        <td class="td-actions text-right">
-                          <button type="button" rel="tooltip" title="" class="btn btn-info btn-round btn-icon btn-icon-mini btn-neutral" data-original-title="Edit Task">
-                            <i class="now-ui-icons ui-2_settings-90"></i>
-                          </button>
-                          <button type="button" rel="tooltip" title="" class="btn btn-danger btn-round btn-icon btn-icon-mini btn-neutral" data-original-title="Remove">
-                            <i class="now-ui-icons ui-1_simple-remove"></i>
-                          </button>
-                        </td>
-                      </tr>
-                      <tr>
-                        <td>
-                          <div class="form-check">
-                            <label class="form-check-label">
-                              <input class="form-check-input" type="checkbox">
-                              <span class="form-check-sign"></span>
-                            </label>
-                          </div>
-                        </td>
-                        <td class="text-left">Lines From Great Russian Literature? Or E-mails From My Boss?</td>
-                        <td class="td-actions text-right">
-                          <button type="button" rel="tooltip" title="" class="btn btn-info btn-round btn-icon btn-icon-mini btn-neutral" data-original-title="Edit Task">
-                            <i class="now-ui-icons ui-2_settings-90"></i>
-                          </button>
-                          <button type="button" rel="tooltip" title="" class="btn btn-danger btn-round btn-icon btn-icon-mini btn-neutral" data-original-title="Remove">
-                            <i class="now-ui-icons ui-1_simple-remove"></i>
-                          </button>
-                        </td>
-                      </tr>
-                      <tr>
-                        <td>
-                          <div class="form-check">
-                            <label class="form-check-label">
-                              <input class="form-check-input" type="checkbox" checked>
-                              <span class="form-check-sign"></span>
-                            </label>
-                          </div>
-                        </td>
-                        <td class="text-left">Flooded: One year later, assessing what was lost and what was found when a ravaging rain swept through metro Detroit
-                        </td>
-                        <td class="td-actions text-right">
-                          <button type="button" rel="tooltip" title="" class="btn btn-info btn-round btn-icon btn-icon-mini btn-neutral" data-original-title="Edit Task">
-                            <i class="now-ui-icons ui-2_settings-90"></i>
-                          </button>
-                          <button type="button" rel="tooltip" title="" class="btn btn-danger btn-round btn-icon btn-icon-mini btn-neutral" data-original-title="Remove">
-                            <i class="now-ui-icons ui-1_simple-remove"></i>
-                          </button>
-                        </td>
-                      </tr>
-                    </tbody>
-                  </table>
-                </div>
-              </div>
-              <div class="card-footer ">
-                <hr>
-                <div class="stats">
-                  <i class="now-ui-icons loader_refresh spin"></i> Updated 3 minutes ago
-                </div>
-              </div>
-            </div>
-          </div>
-          <div class="col-md-6">
-            <div class="card">
-              <div class="card-header">
-                <h5 class="card-category">All Persons List</h5>
-                <h4 class="card-title"> Employees Stats</h4>
-              </div>
-              <div class="card-body">
-                <div class="table-responsive">
-                  <table class="table">
-                    <thead class=" text-primary">
-                      <th>
-                        Name
-                      </th>
-                      <th>
-                        Country
-                      </th>
-                      <th>
-                        City
-                      </th>
-                      <th class="text-right">
-                        Salary
-                      </th>
-                    </thead>
-                    <tbody>
-                      <tr>
-                        <td>
-                          Dakota Rice
-                        </td>
-                        <td>
-                          Niger
-                        </td>
-                        <td>
-                          Oud-Turnhout
-                        </td>
-                        <td class="text-right">
-                          $36,738
-                        </td>
-                      </tr>
-                      <tr>
-                        <td>
-                          Minerva Hooper
-                        </td>
-                        <td>
-                          Curaçao
-                        </td>
-                        <td>
-                          Sinaai-Waas
-                        </td>
-                        <td class="text-right">
-                          $23,789
-                        </td>
-                      </tr>
-                      <tr>
-                        <td>
-                          Sage Rodriguez
-                        </td>
-                        <td>
-                          Netherlands
-                        </td>
-                        <td>
-                          Baileux
-                        </td>
-                        <td class="text-right">
-                          $56,142
-                        </td>
-                      </tr>
-                      <tr>
-                        <td>
-                          Doris Greene
-                        </td>
-                        <td>
-                          Malawi
-                        </td>
-                        <td>
-                          Feldkirchen in Kärnten
-                        </td>
-                        <td class="text-right">
-                          $63,542
-                        </td>
-                      </tr>
-                      <tr>
-                        <td>
-                          Mason Porter
-                        </td>
-                        <td>
-                          Chile
-                        </td>
-                        <td>
-                          Gloucester
-                        </td>
-                        <td class="text-right">
-                          $78,615
-                        </td>
-                      </tr>
-                    </tbody>
-                  </table>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div> --}}
+     
         
         @else
         {{-- content dashboard for user  --}}
+       
         <div class="row">
-          <div class="col-lg">
+          <div class="col-lg-4">
             <div class="card">
-              <div class="card card-header">
-  
-              </div>
+              {{-- <div class="card-header">
+                <h4 class="card-title">30 อาหารคลีนสายขึ้เกียจ!</h4>
+              </div> --}}
               <div class="card-body">
-                <div class="cover">
-                  <img src="{{asset('images/cover.jpeg')}}" alt="ปก" >
-                  </div>
-                  <div class="container">
-                  <!-- กล่องบทความสุขภาพที่ 1 -->
-                  <div class="article-box">
+                <div class="article-box">
                   <a href="https://women.trueid.net/detail/ywn1pK0JP4X8">
-                  <img img src="{{ asset('images/1.jpeg') }}" alt="บทความสุขภาพ 1" style="width: 100%; ">
-                  <p>อยากกินอาหารคลีนแต่ก็ขี้เกียจทำอาหารใครเป็นแบบนี้บ้างเอ่ยใครที่เป็นสายขี้เกียจทำอาหารแบบนี้
-                  ตามเรามาทางนี้เลยค่าวันนี้เรามีเมนูอาหารคลีน2566</p>
-                  
-                  
-                  </a>
-                  </div>
-                  
-                  
-                  <!-- กล่องบทความสุขภาพที่ 2 -->
-                  <div class="article-box">
-                  <a href="https://library.wu.ac.th/km/%e0%b8%ad%e0%b8%b2%e0%b8%ab%e0%b8%b2%e0%b8%a3%e0%b9%80%e0%b8%9e%e0%b8%b7%e0%b9%88%e0%b8%ad%e0%b8%aa%e0%b8%b8%e0%b8%82%e0%b8%a0%e0%b8%b2%e0%b8%9e-%e0%b8%81%e0%b8%b4%e0%b8%99%e0%b8%ad%e0%b8%a2%e0%b9%88/?fbclid=IwAR3kxAgNhspPNkk9GHvrdy_FmbLH1pKfn_F6DKLScKV6MCNIE3nb96nzDpU">
-                  <img src="{{ asset('images/2.jpeg') }}" alt="บทความสุขภาพ 2" style="width: 100%;">
-                  
-                  
-                  <p>การกินอาหารเพื่อสุขภาพเป็นการเลือกกินอาหารให้หลากหลายและครบ 5 หมู่ในปริมาณที่เหมาะสม ซึ่งจะทำให้ร่างกายได้รับสารอาหารที่เพียงพอต่อความต้องการในแต่ละวัน การกินอาหารที่มีประโยชน์เป็นปัจจัยสำคัญที่ช่วยเสริมสร้างสุขภาพให้แข็งแรง</p>
-                  
-                  
-                  </a>
-                  </div>
-                  
-                  
-                  <!-- กล่องบทความสุขภาพที่ 3 -->
-                  <div class="article-box">
-                  <a href="https://www.sanook.com/health/11493/">
-                  <img src="{{asset('images/4.jpeg')}}" alt="บทความสุขภาพ 3">
-                  
-                  
-                  <p>คาร์ดิโอ VS เวทเทรนนิ่ง เราเหมาะกับการออกกำลังกายแบบไหน? ไม่ว่าจะเป็นการออกกำลังกายประเภทใด ด้วยวิธีไหน ก็ส่งผลดีต่อร่างกายได้ทั้งนั้น เพียงแต่หากเรามีความกังวลในเรื่องของผลลัพธ์ที่จะเกิดขึ้น ว่าเป็นไปอย่างที่เราตั้งใจหรือไม่</p>
-                  </a>
-                  </div>
-                  
-                  
-                  <!-- กล่องบทความสุขภาพที่ 4 -->
-                  <div class="article-box">
-                  <a href="https://www.phyathai.com/th/article/2380-%E0%B8%AA%E0%B8%A3%E0%B9%89%E0%B8%B2%E0%B8%87%E0%B8%AA%E0%B8%B8%E0%B8%82%E0%B8%A0%E0%B8%B2%E0%B8%9E%E0%B8%94%E0%B8%B5%E0%B9%84%E0%B8%A1%E0%B9%88%E0%B8%A2%E0%B8%B2%E0%B8%81_%E0%B9%81%E0%B8%84?fbclid=IwAR3gVVSxlJBrpIQpAZCgzzJuNTcj-z9b188THvU8Gwc01CLTpR9KXkKbliA">
-                  <img src="{{asset('images/5.jpeg')}}" alt="บทความสุขภาพ 4">
-                  <p>สร้างสุขภาพดีไม่ยาก แค่ปรับการใช้ชีวิตประจำวันให้ถูกหลัก สนับสนุนให้คนไทยใส่ใจกับการสร้างสุขภาพที่ดี ด้วยเทคนิคการดูแลสุขภาพในหนึ่งวัน เทคนิคที่จะช่วยให้การสร้างสุขภาพที่ดี…ไม่ว่าใครก็ทำได้ ง่ายนิดเดียว!</p>
-                  
-                  
-                  </a>
-                  </div>
-                  
-                  
-                  <!-- กล่องบทความสุขภาพที่ 5 -->
-                  <div class="article-box">
-                  <a href="https://hhcthailand.com/exercise-techniques/?fbclid=IwAR3uEBXdAdmRITAcC3ivL4bzS88qYGFVD8q931eBdFEmQM0iuHrClUm5j_M">
-                  <img src="{{asset('images/7.jpeg')}}" alt="บทความสุขภาพ 5">
-                  
-                  
-                  <p>การออกกําลังกายเพื่อสุขภาพคือแนวทางการดูแลสุขภาพตัวเองที่เป็นที่นิยมอย่างมากในกลุ่มคนหนุ่มสาว รวมไปถึงวัยกลางคนและวัยสูงอายุที่ต้องการให้ตัวเองมีสุขภาพที่ดีอยู่เสมอ แต่จะมีสักกี่คนที่รู้ว่าแท้จริงแล้วประโยชน์การออกกำลังกายคืออะไร แล้วการออกกําลังกายเพื่อสุขภาพให้มีประสิทธิภาพนั้นมีเทคนิคอะไรที่เราต้องรู้บ้าง</p>
-                  
-                  
-                  </a>
-                  </div>
-                  
-                  
-                  <!-- กล่องบทความสุขภาพที่ 6 -->
-                  <div class="article-box">
-                  <a href="https://www.petcharavejhospital.com/en/Article/article_detail/How-do-you-do-your-first-period?fbclid=IwAR0lgg6adBwS4ZfWTvg76RLf8D45_7FUmgMu1wgMqS_Ug3rJXh6iyBxkjTU">
-                  <img src="{{asset('images/8.jpeg')}}" alt="บทความสุขภาพ 6">
-                  
-                  
-                  <p>ประจำเดือน เป็นสิ่งที่บอกถึงการเปลี่ยนแปลงทางร่างกายของเพศหญิงว่าเข้าสู่วัยเจริญพันธุ์ โดยจะเริ่มเป็นประจำเดือนครั้งแรก เมื่ออายุประมาณ 12-13 ปี และจะหมดประจำเดือนในช่วงอายุประมาณ 45-60 ปี ฉะนั้นจะต้องเตรียมรับมือกับประจำเดือน และเตรียมความพร้อมเมื่อเข้าสู่วัยรุ่นของผู้หญิง</p>
-                  
-                  
-                  </a>
-                  </div>
-                  
-                  
-                  <!-- กล่องบทความสุขภาพที่ 7 -->
-                  <div class="article-box">
-                  <a href="https://www.sikarin.com/health/pms">
-                  <img src="{{asset('images/9.jpeg')}}" alt="บทความสุขภาพ 7">
-                  
-                  
-                  <p>ประจำเดือนเป็นสิ่งที่เกิดขึ้นกับผู้หญิงเราทุกคนเมื่อเริ่มเข้าสู่วัยเจริญพันธุ์ ตั้งแต่อายุ 12 ปีขึ้นไป โดยประจำเดือนในช่วง 2 ปีแรกนั้นมักจะมาไม่สม่ำเสมอเพราะการผลิตฮอร์โมนยังไม่สมดุล ปกติแล้วผู้หญิงจะมีรอบเดือนห่างกันทุก ๆ 28 – 33วัน (ขึ้นอยู่กับแต่ละคน) และมีประจำเดือนเฉลี่ยคือ 6 วัน</p>
-                  
-                  
-                  </a>
-                  </div>
-                  <!-- กล่องบทความสุขภาพที่ 8 -->
-                  <div class="article-box">
-                  <a href="https://w1.med.cmu.ac.th/otolaryngology/km/sleep-hygiene/">
-                  <img src="{{asset('images/10.jpeg')}}" alt="บทความสุขภาพ 8">
-                  
-                  
-                  <p>สุขอนามัยการนอน (Sleep hygiene) เรื่องง่ายๆ ที่อาจถูกมองข้ามการนอนหลับที่ดีจะทำให้ร่างกายเราได้พักผ่อนอย่างเต็มที่ และมีพลังพร้อมที่จะทำกิจกรรมในวันต่อไป คนเราใช้เวลาหนึ่งในสามของวันไปกับการนอน รู้หรือไม่ว่าพฤติกรรมบางอย่างระหว่างวัน โดยเฉพาะช่วงเวลาก่อนนอนอาจส่งผลต่อสุขภาพการนอนของเราได้</p>
-                  
-                  
-                  </a>
-              </div>
-            </div>
-              
-          </div>
-          
-        </div>
-      
+                  <img img src="{{ asset('images/1.jpeg') }}" alt="บทความสุขภาพ 1" class="img-fluid" style="height: 260px"  >
+                  <h5 class="card-category" > <br>อยากกินอาหารคลีนแต่ก็ขี้เกียจทำอาหารใครเป็นแบบนี้บ้างเอ่ยใครที่เป็นสายขี้เกียจทำอาหารแบบนี้
+                  ตามเรามาทางนี้เลยค่าวันนี้เรามีเมนูอาหารคลีน2566 <br><br>
 
+                
+                </h5>                 
+                  </a>
+                  </div>
+              </div>
+              <div class="card-footer"></div>
+            </div>        
+          </div>
+
+          <div class="col-lg col-md-6">
+            <div class="card">
+              {{-- <div class="card-header">
+                <h4 class="card-title">การกินอาหารให้ครบ 5 หมู่</h4>
+              </div> --}}
+              <div class="card-body">
+                <div class="article-box">
+                  <a href="https://library.wu.ac.th/km/%e0%b8%ad%e0%b8%b2%e0%b8%ab%e0%b8%b2%e0%b8%a3%e0%b9%80%e0%b8%9e%e0%b8%b7%e0%b9%88%e0%b8%ad%e0%b8%aa%e0%b8%b8%e0%b8%82%e0%b8%a0%e0%b8%b2%e0%b8%9e-%e0%b8%81%e0%b8%b4%e0%b8%99%e0%b8%ad%e0%b8%a2%e0%b9%88/?fbclid=IwAR3kxAgNhspPNkk9GHvrdy_FmbLH1pKfn_F6DKLScKV6MCNIE3nb96nzDpU">
+                  <img src="{{ asset('images/2.jpeg') }}" alt="บทความสุขภาพ 2" class="img-fluid" style="width: 100%;">                 
+                  <h5 class="card-category" > <br>การกินอาหารเพื่อสุขภาพเป็นการเลือกกินอาหารให้หลากหลายและครบ 5 หมู่ในปริมาณที่เหมาะสม ซึ่งจะทำให้ร่างกายได้รับสารอาหารที่เพียงพอต่อความต้องการในแต่ละวัน การกินอาหารที่มีประโยชน์เป็นปัจจัยสำคัญที่ช่วยเสริมสร้างสุขภาพให้แข็งแรง</h5>                 
+                  </a>
+                  </div>
+              </div>
+              <div class="card-footer"></div>
+            </div>
+           
+          </div>
+
+          <div class="col-lg col-md-6">
+            <div class="card">
+              {{-- <div class="card-header">
+                <h4 class="card-title">คาร์ดิโอ VS เวทเทรนนิ่ง</h4>
+              </div> --}}
+              <div class="card-body">
+                <div class="article-box">
+                  <a href="https://www.sanook.com/health/11493/">
+                  <img src="{{asset('images/4.jpeg')}}" alt="บทความสุขภาพ 3" style="height: 260px">
+                                    
+                  <h5 class="card-category" > <br>คาร์ดิโอ VS เวทเทรนนิ่ง เราเหมาะกับการออกกำลังกายแบบไหน? ไม่ว่าจะเป็นการออกกำลังกายประเภทใด ด้วยวิธีไหน ก็ส่งผลดีต่อร่างกายได้ทั้งนั้น เพียงแต่หากเรามีความกังวลในเรื่องของผลลัพธ์ที่จะเกิดขึ้น ว่าเป็นไปอย่างที่เราตั้งใจหรือไม่<br></h5>
+                  </a>
+                  </div>
+              </div>
+              <div class="card-footer"> </div>
+            </div>
+          </div>
+
+        </div>
+
+        <div class="row">
+          <div class="col-lg-4">
+            <div class="card">
+              {{-- <div class="card-header">
+                <h4 class="card-title">สร้างสุขภาพดีไม่ยาก</h4>
+              </div> --}}
+              <div class="card-body">
+                <div class="article-box">
+                  <a href="https://www.phyathai.com/th/article/2380-%E0%B8%AA%E0%B8%A3%E0%B9%89%E0%B8%B2%E0%B8%87%E0%B8%AA%E0%B8%B8%E0%B8%82%E0%B8%A0%E0%B8%B2%E0%B8%9E%E0%B8%94%E0%B8%B5%E0%B9%84%E0%B8%A1%E0%B9%88%E0%B8%A2%E0%B8%B2%E0%B8%81_%E0%B9%81%E0%B8%84?fbclid=IwAR3gVVSxlJBrpIQpAZCgzzJuNTcj-z9b188THvU8Gwc01CLTpR9KXkKbliA">
+                  <img src="{{asset('images/5.jpeg')}}" alt="บทความสุขภาพ 4" style="height: 260px">
+                  <h5 class="card-category" > <br>สร้างสุขภาพดีไม่ยาก แค่ปรับการใช้ชีวิตประจำวันให้ถูกหลัก สนับสนุนให้คนไทยใส่ใจกับการสร้างสุขภาพที่ดี ด้วยเทคนิคการดูแลสุขภาพในหนึ่งวัน เทคนิคที่จะช่วยให้การสร้างสุขภาพที่ดี…ไม่ว่าใครก็ทำได้ ง่ายนิดเดียว! <br>&nbsp;<br><br></h5>
+                  </a>
+                  </div>
+              </div>
+              <div class="card-footer"></div>
+            </div>            
+          </div>
+
+          <div class="col-lg col-md-6">
+            <div class="card">
+              {{-- <div class="card-header">
+                <h4 class="card-title">การออกกําลังกายเพื่อสุขภาพ</h4>
+              </div> --}}
+              <div class="card-body">
+                <div class="article-box ">
+                  <a href="https://hhcthailand.com/exercise-techniques/?fbclid=IwAR3uEBXdAdmRITAcC3ivL4bzS88qYGFVD8q931eBdFEmQM0iuHrClUm5j_M">
+                  <img src="{{asset('images/7.jpeg')}}" alt="บทความสุขภาพ 5">                
+                  <h5 class="card-category"><br>
+                    การออกกําลังกายเพื่อสุขภาพคือแนวทางการดูแลสุขภาพตัวเองที่เป็นที่นิยมอย่างมากในกลุ่มคนหนุ่มสาว รวมไปถึงวัยกลางคนและวัยสูงอายุที่ต้องการให้ตัวเองมีสุขภาพที่ดีอยู่เสมอ แต่จะมีสักกี่คนที่รู้ว่าแท้จริงแล้วประโยชน์การออกกำลังกายคืออะไร แล้วการออกกําลังกายเพื่อสุขภาพให้มีประสิทธิภาพนั้นมีเทคนิคอะไรที่เราต้องรู้บ้าง<br> <br>
+                   
+                  </h5>                             
+                  </a>
+                  </div>
+              </div>
+              <div class="card-footer"> </div>
+            </div>           
+          </div>
+
+          <div class="col-lg col-md-6">
+            <div class="card">
+              {{-- <div class="card-header">
+                <h4 class="card-title">ประจำเดือน เป็นสิ่งที่บอกถึงการเปลี่ยนแปลงทางร่างกาย</h4>
+              </div> --}}
+              <div class="card-body"><div class="article-box">
+                <a href="https://www.petcharavejhospital.com/en/Article/article_detail/How-do-you-do-your-first-period?fbclid=IwAR0lgg6adBwS4ZfWTvg76RLf8D45_7FUmgMu1wgMqS_Ug3rJXh6iyBxkjTU">
+                <img src="{{asset('images/8.jpeg')}}" alt="บทความสุขภาพ 6" class="img-fluid w-100 h-120" style="height: 260px">               
+                <h5 class="card-category" > <br>ประจำเดือน เป็นสิ่งที่บอกถึงการเปลี่ยนแปลงทางร่างกายของเพศหญิงว่าเข้าสู่วัยเจริญพันธุ์ โดยจะเริ่มเป็นประจำเดือนครั้งแรก เมื่ออายุประมาณ 12-13 ปี และจะหมดประจำเดือนในช่วงอายุประมาณ 45-60 ปี ฉะนั้นจะต้องเตรียมรับมือกับประจำเดือน และเตรียมความพร้อมเมื่อเข้าสู่วัยรุ่นของผู้หญิง <br> <br></h5>               
+                </a>
+                </div>
+
+              </div>
+              <div class="card-footer"></div>
+            </div>
+          </div>
+
+        </div>
+        
+          
+       
+      
         @endif
      
-      <footer class="footer">
+      {{-- <footer class="footer">
         <div class=" container-fluid ">
           <nav>
             <ul>
@@ -627,7 +461,7 @@
             </script>, Designed by <a href="https://www.invisionapp.com" target="_blank">Invision</a>. Coded by <a href="" target="_blank">Faro</a>.
           </div>
         </div>
-      </footer>
+      </footer> --}}
     </div>
   </div>
   <!--   Core JS Files   -->

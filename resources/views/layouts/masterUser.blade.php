@@ -146,7 +146,7 @@
                   {{-- <p>
                     <span class="d-lg-none d-md-block">Account</span>
                   </p> --}}
-                  {{Auth::user()->name}}
+                  {{Auth::user()->username}}
                 </a>
                 
                 <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdownMenuLink">
