@@ -11,11 +11,12 @@ use Illuminate\Database\Eloquent\SoftDeletes;
 
 class recommend_type extends Model
 {
-use HasFactory;
-use SoftDeletes;
-public function recommends() {
-return $this->hasMany(recommend::class);
-}
+    use HasFactory;
+    use SoftDeletes;
+
+    public function recommends() {
+        return $this->hasMany(recommend::class);
+    }
 }
 
 

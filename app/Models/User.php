@@ -16,52 +16,33 @@ use Laravel\Sanctum\HasApiTokens;
 
 class User extends Authenticatable
 {
-use HasApiTokens;
-use HasFactory;
-use HasProfilePhoto;
-use Notifiable;
-use TwoFactorAuthenticatable;
+    use HasApiTokens;
+    use HasFactory;
+    use HasProfilePhoto;
+    use Notifiable;
+    use TwoFactorAuthenticatable;
+    use SoftDeletes;
 
+    public function diet_plans() {
+        return $this->hasMany(diet_plan::class);
+    }
 
-public function diet_plans() {
-return $this->hasMany(diet_plan::class);
-}
-public function bmis() {
-return $this->hasMany(bmi::class);
-}
-public function sleeps() {
-return $this->hasMany(sleep::class);
-}
-public function body_measurements() {
-return $this->hasMany(body_measurement::class);
-}
-public function menstruations() {
-return $this->hasMany(menstruation::class);
-}
-public function exerciserecords() {
-return $this->hasMany(menstruation::class);
-}
-
-
-
-
-/**
-* The attributes that are mass assignable.
-*
-* @var array<int, string>
-*/
-protected $fillable = [
-'username',
-'email',
-'password',
-"fname",
-"lname",
-"img_user",
-"birth",
-"gender",
-"user_type",
-];
-
+    /**
+     * The attributes that are mass assignable.
+     *
+     * @var array<int, string>
+     */
+    protected $fillable = [
+        'name',
+        'email',
+        'password',
+        "fname",
+        "lname",
+        "img_user",
+        "birth",
+        "gender",
+        "user_type",
+    ];
 
 /**
 * The attributes that should be hidden for serialization.
