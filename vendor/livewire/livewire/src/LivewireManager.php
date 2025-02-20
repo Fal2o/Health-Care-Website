@@ -12,6 +12,7 @@ use Livewire\Mechanisms\ComponentRegistry;
 use Livewire\Features\SupportTesting\Testable;
 use Livewire\Features\SupportTesting\DuskTestable;
 use Livewire\Features\SupportAutoInjectedAssets\SupportAutoInjectedAssets;
+use Livewire\Features\SupportLazyLoading\SupportLazyLoading;
 
 class LivewireManager
 {
@@ -100,7 +101,9 @@ class LivewireManager
     {
         $dummyContext = new ComponentContext($component, false);
 
-        return app(HandleComponents::class)->updateProperty($component, $path, $value, $dummyContext);
+        $updatedHook = app(HandleComponents::class)->updateProperty($component, $path, $value, $dummyContext);
+
+        $updatedHook();
     }
 
     function isLivewireRequest()
@@ -140,6 +143,10 @@ class LivewireManager
 
     protected $queryParamsForTesting = [];
 
+    protected $cookiesForTesting = [];
+
+    protected $headersForTesting = [];
+
     function withUrlParams($params)
     {
         return $this->withQueryParams($params);
@@ -152,9 +159,43 @@ class LivewireManager
         return $this;
     }
 
+    function withCookie($name, $value)
+    {
+        $this->cookiesForTesting[$name] = $value;
+
+        return $this;
+    }
+
+    function withCookies($cookies)
+    {
+        $this->cookiesForTesting = array_merge($this->cookiesForTesting, $cookies);
+
+        return $this;
+    }
+
+    function withHeaders($headers)
+    {
+        $this->headersForTesting = array_merge($this->headersForTesting, $headers);
+
+        return $this;
+    }
+
+    function withoutLazyLoading()
+    {
+        SupportLazyLoading::disableWhileTesting();
+
+        return $this;
+    }
+
     function test($name, $params = [])
     {
-        return Testable::create($name, $params, $this->queryParamsForTesting);
+        return Testable::create(
+            $name,
+            $params,
+            $this->queryParamsForTesting,
+            $this->cookiesForTesting,
+            $this->headersForTesting,
+        );
     }
 
     function visit($name)

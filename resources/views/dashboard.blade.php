@@ -222,11 +222,11 @@
                 <button type="button" class="btn btn-round btn-outline-default dropdown-toggle btn-simple btn-icon no-caret" data-toggle="dropdown">
                   <i class="now-ui-icons education_atom"></i>
                 </button>
-                {{-- <div class="dropdown-menu dropdown-menu-right">
-                  <a class="dropdown-item" href="#"> <i class="now-ui-icons users_circle-08"> All User :  {{count($allUser)}}</i></a>
-                  <a class="dropdown-item" href="#"> <i class="now-ui-icons users_single-02"> Admin :  {{count($users_admin)}}</i></a>
-                  <a class="dropdown-item" href="#"> <i class="now-ui-icons users_single-02"> User :  {{count($users)}}</i></a>
-                </div> --}}
+                <div class="dropdown-menu dropdown-menu-right">
+                  <a class="dropdown-item" href="#"> <i class="now-ui-icons users_circle-08"> All User :  {{count($allUsers)}}</i></a>
+                  <a class="dropdown-item" href="#"> <i class="now-ui-icons users_single-02"> Admin :  {{count($usersAdmin)}}</i></a>
+                  <a class="dropdown-item" href="#"> <i class="now-ui-icons users_single-02"> User :  {{count($usersRegular)}}</i></a>
+                </div>
               </div>
             
            <div class="card-body">
@@ -252,17 +252,17 @@
                     <i class="now-ui-icons business_badge"></i>
                   </button>
                   <div class="dropdown-menu dropdown-menu-right">
-                    <a class="dropdown-item" href="#"> <i class="now-ui-icons users_circle-08"> All User :  {{count($allUser)}}</i></a>
-                    <a class="dropdown-item" href="#"> <i class="now-ui-icons users_single-02"> Admin :  {{count($users_admin)}}</i></a>
-                    <a class="dropdown-item" href="#"> <i class="now-ui-icons users_single-02"> User :  {{count($users)}}</i></a>
+                    <a class="dropdown-item" href="#"> <i class="now-ui-icons users_circle-08"> All User :  {{count(value: $allUsers)}}</i></a>
+                    <a class="dropdown-item" href="#"> <i class="now-ui-icons users_single-02"> Admin :  {{count(value: $usersAdmin)}}</i></a>
+                    <a class="dropdown-item" href="#"> <i class="now-ui-icons users_single-02"> User :  {{count(value: $usersRegular)}}</i></a>
                   </div>
                 </div>
               </div>
 
               <div class="card-body">
                 <ul>
-                  @foreach ($allUser as $item)
-                    <li>{{$item->username}}</li>
+                  @foreach ($allUsers as $item)
+                    <li>{{$item->name}}</li>
                   @endforeach
                 </ul>
                 
@@ -284,9 +284,21 @@
                     <i class="now-ui-icons emoticons_satisfied"></i>
                   </button>
                   <div class="dropdown-menu dropdown-menu-right">
-                    <a class="dropdown-item" href="#"> <i class="now-ui-icons users_circle-08"> All User :  {{count($allUser)}}</i></a>
-                    <a class="dropdown-item" href="#"> <i class="now-ui-icons users_single-02"> Admin :  {{count($users_admin)}}</i></a>
-                    <a class="dropdown-item" href="#"> <i class="now-ui-icons users_single-02"> User :  {{count($users)}}</i></a>
+                    <a class="dropdown-item" href="#">
+                      <i class="now-ui-icons users_circle-08">
+                          All User : {{ count($allUsers) }}
+                      </i>
+                  </a>
+                  <a class="dropdown-item" href="#">
+                      <i class="now-ui-icons users_single-02">
+                          Admin : {{ count($usersAdmin) }}
+                      </i>
+                  </a>
+                  <a class="dropdown-item" href="#">
+                      <i class="now-ui-icons users_single-02">
+                          User : {{ count($usersRegular) }}
+                      </i>
+                  </a>
                   </div>
                 </div>
               </div>

@@ -39,7 +39,15 @@ class Controller extends BaseController
 
     public function index(){
         $user_type = Auth::user()->user_type;
-        return view('Dashboard',compact('user_type'));
+        $allUsers = User::all() ?? []; // All users (ensuring it's an array)
+        $usersAdmin = User::where('user_type', 'admin')->get() ?? []; // Admin users
+        $usersRegular = User::where('user_type', 'user')->get() ?? []; // Regular users 
+        return view('Dashboard',[
+            'allUsers' => $allUsers,
+            'usersAdmin' => $usersAdmin,
+            'usersRegular' => $usersRegular,
+            'user_type' => $user_type
+        ]);
     }
 
     public function showBodyDatatest(){
